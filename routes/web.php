@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\GroceriesController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SiteController;
 
@@ -18,10 +19,16 @@ use App\Http\Controllers\SiteController;
 //Route::get('/', [SiteController::class, 'index']);
 
 
-Route::controller(SiteController::class)->group(function () {
+/*Route::controller(GroceriesController::class)->group(function () {
     Route::get('/', 'index');
-    Route::get('/services', 'services');
-    Route::get('/products', 'products');
-    Route::get('/contact', 'contact');
-});
+    Route::get('/shop', 'shop');
+    Route::get('/register', 'register');
+    Route::get('/login', 'login');
+});*/
+
+Route::get('/', [GroceriesController::class, 'index'])->name("index");
+Route::get('/shop', [GroceriesController::class, 'shop'])->name("shop");
+Route::get('/register', [GroceriesController::class, 'register'])->name("register");
+Route::get('/login', [GroceriesController   ::class, 'login'])->name("login");
+
 
