@@ -1,9 +1,9 @@
 <?php
 
+use App\Http\Controllers\CommentsController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\GroceriesController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\SiteController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,12 +30,15 @@ use App\Http\Controllers\SiteController;
 Route::get('/', [GroceriesController::class, 'index'])->name("index");
 Route::get('/shop', [GroceriesController::class, 'shop'])->name("shop");
 Route::get('/register', [GroceriesController::class, 'register'])->name("register");
-Route::get('/login', [GroceriesController   ::class, 'login'])->name("login");
+Route::get('/login', [GroceriesController::class, 'login'])->name("login");
 
 //
 Route::resource('/contact', ContactController::class);
 
 //
-Route::get('/detail-product/{id}', 'App\Http\Controllers\GroceriesController@show')->name('detail');
+Route::get('/detail-product/{id}', [GroceriesController::class, 'show'])->name('detail');
 
-
+//
+Route::post('/comments', 'App\Http\Controllers\CommentsController@store')->name('comments.store');
+//Route::resource('/comments', CommentsController::class);
+//Route::post('/comments', 'CommentsController@store');

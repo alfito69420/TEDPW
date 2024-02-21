@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\Comments;
 
 class GroceriesController extends Controller
 {
@@ -13,21 +14,25 @@ class GroceriesController extends Controller
         return view('groceries.index');
     }
 
-    public function shop(){
+    public function shop()
+    {
         $categories = Category::all();
         $products = Product::all();
-        return view("groceries.shop", compact('categories','products') );
+        return view("groceries.shop", compact('categories', 'products'));
     }
 
-    public function show($id) 
+    public function show($id)
     {
         $products = Product::find($id);
+        $comments = Comments::where('products_id', $id)->get();
 
-        if(!$products) {
+        //dd($comments);
+
+        if (!$products) {
             abort(404);
         }
 
-        return view('groceries.detail', ['products' => $products]);
+        return view('groceries.detail', compact('products', 'comments'));
     }
 
     public function login()
@@ -51,6 +56,4 @@ class GroceriesController extends Controller
         //$product_detail = Product::all();
         return view('groceries.contact');
     }
-
-
 }

@@ -2,8 +2,7 @@
 
 @section('main_content')
     <div class="banner">
-        <div class="jumbotron jumbotron-bg text-center rounded-0"
-            style="background-image: url('assets/img/bg-header.jpg');">
+        <div class="jumbotron jumbotron-bg text-center rounded-0" style="background-image: url('assets/img/bg-header.jpg');">
             <div class="container">
                 <h1 class="pt-5">
                     Shopping Page
@@ -268,52 +267,54 @@
     </section>
 
     @foreach ($categories as $cat)
-    <section id="vegetables" class="gray-bg">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <h2 class="title">{{ $cat->name }}</h2>
-                    <div class="product-carousel owl-carousel">
+        <section id="vegetables" class="gray-bg">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h2 class="title">{{ $cat->name }}</h2>
+                        <div class="product-carousel owl-carousel">
 
-                        @foreach ($cat->products as $products)
-                        <div class="item">
-                            <div class="card card-product">
-                                <div class="card-ribbon">
-                                    <div class="card-ribbon-container right">
-                                        <span class="ribbon ribbon-primary">SPECIAL</span>
+                            @foreach ($cat->products as $products)
+                                <div class="item">
+                                    <div class="card card-product">
+                                        <div class="card-ribbon">
+                                            <div class="card-ribbon-container right">
+                                                <span class="ribbon ribbon-primary">SPECIAL</span>
+                                            </div>
+                                        </div>
+                                        <div class="card-badge">
+                                            <div class="card-badge-container left">
+                                                <span class="badge badge-default">
+                                                    Until 2018
+                                                </span>
+                                                <span class="badge badge-primary">
+                                                    20% OFF
+                                                </span>
+                                            </div>
+                                            <img src="assets/img/{{ $products->image }}" alt="Card image 2"
+                                                class="card-img-top">
+                                        </div>
+                                        <div class="card-body">
+                                            <h4 class="card-title">
+                                                <a
+                                                    href="{{ route('detail', ['id' => $products->id]) }}">{{ $products->name }}</a>
+                                            </h4>
+                                            <div class="card-price">
+                                                <span class="discount">${{ $products->purchase_price }}</span>
+                                                <span class="reguler">${{ $products->sale_price }}</span>
+                                            </div>
+                                            <a href="{{ route('detail', ['id' => $products->id]) }}"
+                                                class="btn btn-block btn-primary">
+                                                Add to Cart
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="card-badge">
-                                    <div class="card-badge-container left">
-                                        <span class="badge badge-default">
-                                            Until 2018
-                                        </span>
-                                        <span class="badge badge-primary">
-                                            20% OFF
-                                        </span>
-                                    </div>
-                                    <img src="assets/img/{{ $products->image }}" alt="Card image 2" class="card-img-top">
-                                </div>
-                                <div class="card-body">
-                                    <h4 class="card-title">
-                                        <a href="{{ route('detail', ['id' => $products->id]) }}">{{ $products->name }}</a>
-                                    </h4>
-                                    <div class="card-price">
-                                        <span class="discount">${{ $products->purchase_price }}</span>
-                                        <span class="reguler">${{ $products->sale_price }}</span>
-                                    </div>
-                                    <a href="{{ route('detail', ['id' => $products->id]) }}" class="btn btn-block btn-primary">
-                                        Add to Cart
-                                    </a>
-                                </div>
-                            </div>
-                        </div>                        
-                        @endforeach
+                            @endforeach
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
     @endforeach
-
 @endsection
