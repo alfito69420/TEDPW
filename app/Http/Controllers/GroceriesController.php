@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Category;
+use App\Models\Product;
 
 class GroceriesController extends Controller
 {
@@ -11,9 +13,10 @@ class GroceriesController extends Controller
         return view('groceries.index');
     }
 
-    public function shop()
-    {
-        return view('groceries.shop');
+    public function shop(){
+        $categories = Category::all();
+        $product = Product::all();
+        return view("groceries.shop", compact('categories','product') );
     }
 
     public function login()
@@ -25,4 +28,18 @@ class GroceriesController extends Controller
     {
         return view('groceries.register');
     }
+
+    public function detail()
+    {
+        $product_detail = Product::all();
+        return view('groceries.detail');
+    }
+
+    public function contact()
+    {
+        //$product_detail = Product::all();
+        return view('groceries.contact');
+    }
+
+
 }

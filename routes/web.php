@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\GroceriesController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SiteController;
@@ -30,5 +31,9 @@ Route::get('/', [GroceriesController::class, 'index'])->name("index");
 Route::get('/shop', [GroceriesController::class, 'shop'])->name("shop");
 Route::get('/register', [GroceriesController::class, 'register'])->name("register");
 Route::get('/login', [GroceriesController   ::class, 'login'])->name("login");
+Route::get('/shop/detail', [GroceriesController   ::class, 'detail'])->name("detail");
+
+//  
+Route::resource('/contact', ContactController::class);
 
 
