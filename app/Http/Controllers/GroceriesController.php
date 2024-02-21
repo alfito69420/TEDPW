@@ -15,8 +15,19 @@ class GroceriesController extends Controller
 
     public function shop(){
         $categories = Category::all();
-        $product = Product::all();
-        return view("groceries.shop", compact('categories','product') );
+        $products = Product::all();
+        return view("groceries.shop", compact('categories','products') );
+    }
+
+    public function show($id) 
+    {
+        $products = Product::find($id);
+
+        if(!$products) {
+            abort(404);
+        }
+
+        return view('groceries.detail', ['products' => $products]);
     }
 
     public function login()
