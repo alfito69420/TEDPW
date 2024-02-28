@@ -3,6 +3,7 @@
 use App\Http\Controllers\CommentsController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\GroceriesController;
+use App\Http\Controllers\ProductsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -42,3 +43,5 @@ Route::get('/detail-product/{id}', [GroceriesController::class, 'show'])->name('
 Route::post('/comments', 'App\Http\Controllers\CommentsController@store')->name('comments.store');
 //Route::resource('/comments', CommentsController::class);
 //Route::post('/comments', 'CommentsController@store');
+
+Route::get('/admin', [ProductsController::class, 'index'])->name('index');
