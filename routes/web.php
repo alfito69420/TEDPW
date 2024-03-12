@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CommentsController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\GroceriesController;
 use App\Http\Controllers\ProductsController;
 use Illuminate\Support\Facades\Route;
@@ -45,3 +46,6 @@ Route::post('/comments', 'App\Http\Controllers\CommentsController@store')->name(
 //Route::post('/comments', 'CommentsController@store');
 
 Route::get('/admin', [ProductsController::class, 'index'])->name('index');
+
+//Route::get('/employees', [EmployeeController::class, 'index'])->name('index');
+Route::get("/admin/employees/index", [EmployeeController::class, 'employees'])->name("admin.employees.index");
